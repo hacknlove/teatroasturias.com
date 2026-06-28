@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://teatroasturias.com/sitemap.xml
