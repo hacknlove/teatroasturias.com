@@ -8,17 +8,13 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "scrape:feteas": "node scripts/scrape-feteas.mjs",
-    "cf:dev": "npm run build && wrangler dev --ip 127.0.0.1 --port 34021",
-    "deploy": "npm run build && wrangler deploy"
+    "cf:dev": "npm run build && wrangler dev --ip 127.0.0.1 --port 34021"
   },
   "dependencies": {
-    "astro": "^7.0.2",
-    "minisearch": "^7.2.0"
+    "astro": "^7.0.2"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
-    "cheerio": "^1.2.0",
     "typescript": "^6.0.3",
     "wrangler": "^4.103.0"
   }

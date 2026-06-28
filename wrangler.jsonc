@@ -2,6 +2,11 @@
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "teatroasturias-com",
   "compatibility_date": "2026-06-20",
+  "workers_dev": true,
+  "routes": [
+    { "pattern": "teatroasturias.com", "custom_domain": true },
+    { "pattern": "www.teatroasturias.com", "custom_domain": true }
+  ],
   "assets": {
     "directory": "./dist",
     "not_found_handling": "404-page",
