@@ -1,0 +1,26 @@
+---
+import Layout from "../../components/Layout.astro";
+import EventSection from "../../components/EventSection.astro";
+import { getCompanyGroups, splitEvents } from "../../lib/events";
+
+export function getStaticPaths() {
+  return getCompanyGroups().map((group) => ({
+    params: { slug: group.slug },
+    props: { group },
+  }));
+}
+
+const { group } = Astro.props;
+const { upcoming, past } = splitEvents(group.events);
+---
+
+<Layout title={`${group.name} | Teatro Asturias`} description={`Obras de ${group.name}: cartelera, fechas, carteles y entradas.`}>
+  <main>
+    <section class="page-heading">
+      <p class="kicker">Compañía</p>
+      <h1>{group.name}</h1>
+    </section>
+    <EventSection title="Próximas obras" events={upcoming} empty="No hay próximas obras de esta compañía." />
+    <EventSection title="Obras pasadas" events={past} empty="No hay obras pasadas de esta compañía." />
+  </main>
+</Layout>

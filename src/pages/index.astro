@@ -1,0 +1,102 @@
+---
+import Layout from "../components/Layout.astro";
+import EventSection from "../components/EventSection.astro";
+import { getCompanyGroups, getLocationGroups, splitEvents } from "../lib/events";
+
+const { upcoming, past } = splitEvents();
+const locations = getLocationGroups();
+const companies = getCompanyGroups();
+const featuredLocations = locations
+  .filter((location) => location.nextEvent?.status === "upcoming")
+  .sort((a, b) => (a.nextEvent?.timestamp ?? 0) - (b.nextEvent?.timestamp ?? 0))
+  .slice(0, 12);
+const featuredCompanies = companies
+  .filter((company) => company.nextEvent?.status === "upcoming")
+  .sort((a, b) => (a.nextEvent?.timestamp ?? 0) - (b.nextEvent?.timestamp ?? 0))
+  .slice(0, 8);
+---
+
+<Layout
+  title="Teatro Asturias | Cartelera teatral"
+  description="Cartelera teatral de Asturias: obras próximas y pasadas, salas, compañías, carteles, calendarios y entradas."
+>
+  <main>
+    <section class="intro">
+      <div class="intro-copy">
+        <p class="kicker">Cartelera teatral</p>
+        <h1>Teatro Asturias</h1>
+        <p>Obras, carteles, fechas, salas y compañías en una cartelera clara para decidir rápido qué ver.</p>
+      </div>
+      <form class="search-box" role="search" data-search-form>
+        <label for="site-search">Buscar</label>
+        <div class="search-row">
+          <input
+            id="site-search"
+            name="q"
+            type="search"
+            placeholder="Obra, sala, ciudad o compañía"
+            autocomplete="off"
+            data-search-input
+          />
+          <button type="reset" data-search-reset>Limpiar</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="search-results" data-search-panel hidden aria-live="polite">
+      <div class="section-heading">
+        <h2>Resultados</h2>
+        <span data-search-count>0</span>
+      </div>
+      <p class="search-summary" data-search-summary></p>
+      <div class="event-grid" data-search-results></div>
+    </section>
+
+    <div data-default-feed>
+      <EventSection title="Próximas obras" events={upcoming} empty="No hay próximas obras publicadas." />
+
+      <section class="explore-compact" aria-label="Explorar por ubicación y compañía">
+        <div class="section-heading">
+          <h2>Explorar</h2>
+          <span>{locations.length + companies.length}</span>
+        </div>
+        <div class="explore-panels">
+          <div class="explore-panel">
+            <div class="explore-panel-heading">
+              <h3>Ubicaciones con próximas obras</h3>
+              <a class="text-link" href="/ubicaciones/">Todas</a>
+            </div>
+            <div class="compact-link-list">
+              {(featuredLocations.length > 0 ? featuredLocations : locations.slice(0, 12)).map((location) => (
+                <a href={`/ubicaciones/${location.slug}/`}>
+                  <span>{location.name}</span>
+                  <small>{location.nextEvent?.dateLabel ?? `${location.events.length} obras`}</small>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {companies.length > 0 && (
+            <div class="explore-panel">
+              <div class="explore-panel-heading">
+                <h3>Compañías</h3>
+                <a class="text-link" href="/companias/">Todas</a>
+              </div>
+              <div class="compact-link-list">
+                {(featuredCompanies.length > 0 ? featuredCompanies : companies.slice(0, 8)).map((company) => (
+                  <a href={`/companias/${company.slug}/`}>
+                    <span>{company.name}</span>
+                    <small>{company.nextEvent?.dateLabel ?? `${company.events.length} obras`}</small>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+
+      <EventSection title="Obras pasadas" events={past} empty="No hay obras pasadas publicadas." />
+    </div>
+  </main>
+  <script src="../scripts/search.ts"></script>
+</Layout>

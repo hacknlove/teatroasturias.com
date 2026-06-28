@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1300" viewBox="0 0 900 1300" role="img" aria-labelledby="title desc">
+  <title id="title">Cartel El gesto mínimo</title>
+  <desc id="desc">Cartel tipográfico de muestra para una obra teatral.</desc>
+  <rect width="900" height="1300" fill="#f7f7f5"/>
+  <rect x="80" y="80" width="740" height="1140" fill="#17685e"/>
+  <rect x="150" y="150" width="600" height="610" fill="#181615"/>
+  <path d="M230 660 C330 460 570 460 670 660" fill="none" stroke="#a36d1f" stroke-width="38"/>
+  <circle cx="450" cy="360" r="92" fill="#f7f7f5"/>
+  <text x="150" y="865" font-family="Georgia, serif" font-size="76" fill="#f7f7f5">El gesto</text>
+  <text x="150" y="955" font-family="Georgia, serif" font-size="76" fill="#f7f7f5">mínimo</text>
+  <text x="150" y="1080" font-family="Arial, sans-serif" font-size="34" fill="#f7f7f5">5 JUL · TEATRO JOVELLANOS</text>
+  <text x="150" y="1136" font-family="Arial, sans-serif" font-size="30" fill="#d8d8d2">Teatro del Umbral</text>
+</svg>

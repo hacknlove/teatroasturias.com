@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1300" viewBox="0 0 900 1300" role="img" aria-labelledby="title desc">
+  <title id="title">Cartel Donde acaba la niebla</title>
+  <desc id="desc">Cartel tipográfico de muestra para una obra teatral.</desc>
+  <rect width="900" height="1300" fill="#f7f7f5"/>
+  <rect x="70" y="70" width="760" height="1160" fill="#d8d8d2"/>
+  <rect x="140" y="150" width="620" height="520" fill="#69615d"/>
+  <path d="M140 550 C260 490 330 620 450 560 C570 500 640 620 760 560 L760 670 L140 670 Z" fill="#f7f7f5"/>
+  <text x="140" y="810" font-family="Georgia, serif" font-size="68" fill="#181615">Donde acaba</text>
+  <text x="140" y="895" font-family="Georgia, serif" font-size="68" fill="#181615">la niebla</text>
+  <text x="140" y="1020" font-family="Arial, sans-serif" font-size="34" fill="#8b1e34">12 MAY · TEATRO FILARMÓNICA</text>
+  <text x="140" y="1076" font-family="Arial, sans-serif" font-size="30" fill="#69615d">Compañía Norte</text>
+</svg>

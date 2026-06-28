@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1300" viewBox="0 0 900 1300" role="img" aria-labelledby="title desc">
+  <title id="title">Cartel Noche de tablas</title>
+  <desc id="desc">Cartel tipográfico de muestra para una obra teatral.</desc>
+  <rect width="900" height="1300" fill="#181615"/>
+  <rect x="86" y="92" width="728" height="1116" fill="#a36d1f"/>
+  <rect x="155" y="155" width="590" height="590" fill="#f7f7f5"/>
+  <path d="M155 745 L745 155" stroke="#8b1e34" stroke-width="56"/>
+  <path d="M155 155 L745 745" stroke="#17685e" stroke-width="36"/>
+  <text x="155" y="872" font-family="Georgia, serif" font-size="78" fill="#181615">Noche de</text>
+  <text x="155" y="965" font-family="Georgia, serif" font-size="78" fill="#181615">tablas</text>
+  <text x="155" y="1090" font-family="Arial, sans-serif" font-size="34" fill="#181615">2 AGO · CASA DE CULTURA</text>
+  <text x="155" y="1145" font-family="Arial, sans-serif" font-size="30" fill="#181615">Mieres</text>
+</svg>

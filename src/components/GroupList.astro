@@ -1,0 +1,28 @@
+---
+import type { EventGroup } from "../lib/events";
+
+interface Props {
+  groups: EventGroup[];
+  basePath: "/ubicaciones" | "/companias";
+}
+
+const { groups, basePath } = Astro.props;
+---
+
+<div class="group-grid">
+  {groups.map((group) => (
+    <article class="group-card">
+      <a class="group-card-main" href={`${basePath}/${group.slug}/`}>
+        <span>{group.name}</span>
+        {group.subtitle && <small>{group.subtitle}</small>}
+      </a>
+      <p>
+        {group.events.length} {group.events.length === 1 ? "obra" : "obras"}
+        {group.nextEvent && <> · próxima: {group.nextEvent.dateLabel}</>}
+      </p>
+      {group.mapsUrl && (
+        <a class="group-map" href={group.mapsUrl} target="_blank" rel="noreferrer">Mapa</a>
+      )}
+    </article>
+  ))}
+</div>

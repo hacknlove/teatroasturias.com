@@ -1,0 +1,44 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Teatro Asturias",
+  description = "Cartelera teatral de Asturias con obras, salas, compañías y enlaces a entradas.",
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://teatroasturias.com");
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Teatro Asturias">
+        <span class="brand-mark" aria-hidden="true">TA</span>
+        <span>Teatro Asturias</span>
+      </a>
+      <nav class="site-nav" aria-label="Principal">
+        <a href="/">Cartelera</a>
+        <a href="/ubicaciones/">Ubicaciones</a>
+        <a href="/companias/">Compañías</a>
+      </nav>
+    </header>
+    <slot />
+    <footer class="site-footer">
+      <p>Cartelera teatral de Asturias.</p>
+    </footer>
+  </body>
+</html>

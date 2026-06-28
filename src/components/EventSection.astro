@@ -1,0 +1,32 @@
+---
+import EventCard from "./EventCard.astro";
+import type { EnrichedEvent } from "../lib/events";
+
+interface Props {
+  title: string;
+  events: EnrichedEvent[];
+  empty: string;
+}
+
+const { title, events, empty } = Astro.props;
+const headingId = title
+  .normalize("NFD")
+  .replace(/[\u0300-\u036f]/g, "")
+  .toLowerCase()
+  .replace(/[^a-z0-9]+/g, "-")
+  .replace(/^-+|-+$/g, "");
+---
+
+<section class="event-section" aria-labelledby={headingId}>
+  <div class="section-heading">
+    <h2 id={headingId}>{title}</h2>
+    <span>{events.length}</span>
+  </div>
+  {events.length > 0 ? (
+    <div class="event-grid">
+      {events.map((event) => <EventCard event={event} />)}
+    </div>
+  ) : (
+    <p class="empty-state">{empty}</p>
+  )}
+</section>
