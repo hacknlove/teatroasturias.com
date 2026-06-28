@@ -5,12 +5,14 @@ interface Props {
   title?: string;
   description?: string;
   noindex?: boolean;
+  structuredData?: Array<Record<string, unknown>>;
 }
 
 const {
   title = "Teatro Asturias",
   description = "Grupo de WhatsApp para compartir eventos y hablar de teatro en Asturias.",
   noindex = false,
+  structuredData = [],
 } = Astro.props;
 
 const site = Astro.site ?? "https://teatroasturias.com";
@@ -35,6 +37,7 @@ const jsonLd = [
     description,
     image: image.href,
   },
+  ...structuredData,
 ];
 ---
 

@@ -4,11 +4,64 @@ import Layout from "../components/Layout.astro";
 import heroImage from "../assets/teatro-asturias-comunidad-interior.jpg";
 
 const whatsappUrl = "https://chat.whatsapp.com/F4bMX5HpS0o5gTRCZ9EpGs";
+const eventTypes = [
+  "Funciones, estrenos y pases especiales",
+  "Talleres, cursos y laboratorios escénicos",
+  "Convocatorias, castings y oportunidades",
+  "Lecturas, encuentros y actividades culturales",
+];
+const zones = ["Oviedo", "Gijón", "Avilés", "Cuencas", "Oriente", "Occidente"];
+const rules = [
+  "Comparte solo información relacionada con teatro y artes escénicas.",
+  "Incluye fecha, lugar, enlace y una breve descripción cuando publiques un evento.",
+  "Evita spam, cadenas y mensajes que no aporten al grupo.",
+  "Respeta a compañías, espacios, público y profesionales.",
+];
+const faqItems = [
+  {
+    question: "¿El grupo es solo para profesionales?",
+    answer:
+      "No. El grupo está abierto a público, compañías, intérpretes, técnicos, espacios culturales y cualquier persona interesada en el teatro en Asturias.",
+  },
+  {
+    question: "¿Se pueden compartir obras y eventos?",
+    answer:
+      "Sí. Puedes compartir funciones, estrenos, talleres, lecturas, convocatorias y actividades relacionadas con la escena asturiana.",
+  },
+  {
+    question: "¿Es solo para Oviedo, Gijón y Avilés?",
+    answer:
+      "No. La idea es reunir información de toda Asturias, incluyendo ciudades, villas, concejos y espacios con actividad teatral.",
+  },
+  {
+    question: "¿El grupo pertenece a una institución?",
+    answer:
+      "No. Teatro Asturias funciona como punto de encuentro informal para compartir información útil sobre teatro y comunidad escénica.",
+  },
+  {
+    question: "¿Hay normas para publicar?",
+    answer:
+      "Sí. Se pide mantener el tema teatral, evitar spam, aportar contexto en cada publicación y cuidar el respeto entre participantes.",
+  },
+];
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
 ---
 
 <Layout
-  title="Teatro Asturias | Grupo de WhatsApp"
-  description="Teatro Asturias es un grupo de WhatsApp para compartir eventos y conversar sobre teatro en Asturias."
+  title="Teatro Asturias | Eventos y comunidad teatral en Asturias"
+  description="Teatro Asturias es un grupo de WhatsApp para descubrir eventos de teatro en Asturias, compartir funciones, talleres y convocatorias, y conectar con la comunidad teatral asturiana."
+  structuredData={[faqJsonLd]}
 >
   <main class="landing">
     <section class="hero" aria-labelledby="hero-title">
@@ -26,8 +79,135 @@ const whatsappUrl = "https://chat.whatsapp.com/F4bMX5HpS0o5gTRCZ9EpGs";
         <p class="kicker">Grupo de WhatsApp</p>
         <h1 id="hero-title">Teatro Asturias</h1>
         <p>
-          Un punto de encuentro para compartir eventos, hablar de teatro y estar en contacto con la comunidad teatral asturiana.
+          Un punto de encuentro para descubrir eventos de teatro en Asturias, compartir actividad escénica y estar en contacto con la comunidad teatral asturiana.
         </p>
+        <a class="primary-action" href={whatsappUrl} target="_blank" rel="noreferrer">
+          Entrar en el grupo
+        </a>
+      </div>
+    </section>
+
+    <section class="content-band intro-band" aria-labelledby="about-title">
+      <div class="section-inner intro-layout">
+        <div>
+          <p class="kicker">Qué es</p>
+          <h2 id="about-title">Un grupo para estar al día del teatro en Asturias</h2>
+        </div>
+        <div class="intro-copy">
+          <p>
+            Teatro Asturias es un grupo abierto para personas interesadas en el teatro en Asturias:
+            público, compañías, intérpretes, técnicos, espacios culturales y cualquiera que quiera
+            enterarse de funciones, estrenos, talleres, lecturas, convocatorias o actividades relacionadas
+            con la escena asturiana.
+          </p>
+          <p>
+            Funciona como punto de encuentro informal. No sustituye a las agendas oficiales ni pertenece a
+            una institución concreta: sirve para compartir información útil y mantener conectada a la
+            comunidad teatral.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-band audience-band" aria-labelledby="audience-title">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="kicker">Para quién es</p>
+          <h2 id="audience-title">Público, profesionales y gente con curiosidad por la escena</h2>
+          <p>
+            El grupo tiene sentido si buscas planes culturales, quieres mover una actividad teatral o te
+            interesa saber qué está pasando en los escenarios asturianos.
+          </p>
+        </div>
+        <div class="audience-grid">
+          <article>
+            <h3>Público teatral</h3>
+            <p>Para descubrir obras, espacios, ciclos y propuestas antes de que se pierdan en el ruido de las redes.</p>
+          </article>
+          <article>
+            <h3>Compañías y artistas</h3>
+            <p>Para compartir funciones, procesos, convocatorias y noticias útiles con personas interesadas.</p>
+          </article>
+          <article>
+            <h3>Espacios y proyectos</h3>
+            <p>Para hacer circular talleres, encuentros, lecturas, residencias y actividades vinculadas a las artes escénicas.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-band share-band" aria-labelledby="share-title">
+      <div class="section-inner split-layout">
+        <div class="section-heading">
+          <p class="kicker">Qué se comparte</p>
+          <h2 id="share-title">Información concreta sobre actividad teatral</h2>
+          <p>
+            Cuanto más clara sea la publicación, más fácil es que llegue a quien puede asistir, participar
+            o ayudar a difundir.
+          </p>
+        </div>
+        <ul class="check-list" aria-label="Tipos de publicaciones recomendadas">
+          {eventTypes.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <section class="content-band zones-band" aria-labelledby="zones-title">
+      <div class="section-inner zones-layout">
+        <div>
+          <p class="kicker">Asturias</p>
+          <h2 id="zones-title">Una comunidad para mirar más allá de una sola ciudad</h2>
+          <p>
+            El teatro en Asturias no vive solo en los grandes escenarios. También aparece en salas pequeñas,
+            centros culturales, festivales, escuelas, pueblos y proyectos independientes.
+          </p>
+        </div>
+        <div class="zone-list" aria-label="Zonas de Asturias">
+          {zones.map((zone) => <span>{zone}</span>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="content-band rules-band" aria-labelledby="rules-title">
+      <div class="section-inner split-layout">
+        <div class="section-heading">
+          <p class="kicker">Normas básicas</p>
+          <h2 id="rules-title">Un grupo útil necesita mensajes cuidados</h2>
+          <p>
+            La idea es que Teatro Asturias sea práctico, respetuoso y centrado en la actividad escénica.
+          </p>
+        </div>
+        <ol class="rules-list">
+          {rules.map((rule) => <li>{rule}</li>)}
+        </ol>
+      </div>
+    </section>
+
+    <section class="content-band faq-band" aria-labelledby="faq-title">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="kicker">Preguntas frecuentes</p>
+          <h2 id="faq-title">Antes de entrar en el grupo</h2>
+        </div>
+        <div class="faq-list">
+          {
+            faqItems.map((item) => (
+              <article>
+                <h3>{item.question}</h3>
+                <p>{item.answer}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta" aria-labelledby="join-title">
+      <div class="section-inner final-cta-inner">
+        <div>
+          <p class="kicker">Entrar</p>
+          <h2 id="join-title">Conecta con gente que quiere hablar de teatro en Asturias</h2>
+        </div>
         <a class="primary-action" href={whatsappUrl} target="_blank" rel="noreferrer">
           Entrar en el grupo
         </a>
